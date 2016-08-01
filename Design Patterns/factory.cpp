@@ -17,7 +17,7 @@ class Factory
 	virtual Product* CreateMathod() = 0;
 };
 
-class ConcreteFactory : public Factory
+class ConcreteFactory : public Factory//每次有新的产品出现都要修改工厂类（违背了开放闭合原则）
 {
 public:
 	virtual Product* CreateMathod()
