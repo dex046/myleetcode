@@ -46,3 +46,38 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+string convert(string s, int numRows)
+{
+    int row = numRows, i = 0;
+    int len = s.length();
+    if(len==1||numRows==1) return s;
+    string convertion;
+    int interval[3] = {0,0,0};
+    interval[0] = (numRows - 2) * 2 + 2;
+    while (row)
+    {
+        interval[2] = (numRows - row) * 2;
+        interval[1] = interval[0] - interval[2];
+        i = numRows - row;
+        for (; i < len;)
+        {
+            if (interval[1] != 0)
+            {
+                convertion.append(1, s[i]);
+            }
+            i = i + interval[1];
+            if (interval[2] != 0&&i<len)
+            {
+                convertion.append(1, s[i]);
+            }
+            i = i + interval[2];
+        }
+        row =row - 1;
+
+    }
+    return convertion;
+}
+};
